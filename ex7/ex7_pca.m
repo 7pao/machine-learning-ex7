@@ -208,11 +208,12 @@ sel = floor(rand(1000, 1) * size(X, 1)) + 1;
 
 %  Setup Color Palette
 palette = hsv(K);
-colors = palette(idx(sel), :);
-
+%colors = palette(idx(sel), :);
+colors = palette(idx, :);
 %  Visualize the data and centroid memberships in 3D
 figure;
-scatter3(X(sel, 1), X(sel, 2), X(sel, 3), 10, colors);
+%scatter3(X(sel, 1), X(sel, 2), X(sel, 3), 10, colors);
+scatter3(X(:, 1), X(:, 2), X(:, 3), 10, colors);
 title('Pixel dataset plotted in 3D. Color shows centroid memberships');
 fprintf('Program paused. Press enter to continue.\n');
 pause;
@@ -229,7 +230,8 @@ Z = projectData(X_norm, U, 2);
 
 % Plot in 2D
 figure;
-plotDataPoints(Z(sel, :), idx(sel), K);
+%plotDataPoints(Z(sel, :), idx(sel), K);
+plotDataPoints(Z, idx, K);
 title('Pixel dataset plotted in 2D, using PCA for dimensionality reduction');
 fprintf('Program paused. Press enter to continue.\n');
 pause;
